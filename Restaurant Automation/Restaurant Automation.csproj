@@ -222,16 +222,18 @@
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
-      <HintPath>C:/Users/Karl Smink/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
+      <HintPath>C:/Users/krlsmnk/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing">
-      <HintPath>C:/Users/Karl Smink/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
+      <HintPath>C:/Users/krlsmnk/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
-      <HintPath>C:/Users/Karl Smink/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/krlsmnk/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\button_3.cs" />
+    <Compile Include="Assets\food1.cs" />
     <Compile Include="Assets\Scripts\Example.cs" />
     <Compile Include="Assets\Scripts\keypad_program.cs" />
     <Compile Include="Assets\Scripts\KS_program.cs" />
@@ -240,6 +242,9 @@
     <Compile Include="Assets\Scripts\referenced_variables_SEP.cs" />
     <Compile Include="Assets\Scripts\tableHighlight.cs" />
     <Compile Include="Assets\Scripts\tableInfo.cs" />
+    <Compile Include="Assets\Table0Interface.cs" />
+    <Compile Include="Assets\TableOptionsWaiter.cs" />
+    <Compile Include="Assets\TakeOrders.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\order_up_file.txt" />

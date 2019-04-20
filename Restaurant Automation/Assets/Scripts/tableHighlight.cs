@@ -45,6 +45,7 @@ public class tableHighlight : MonoBehaviour {
 			// And do what ever else you want with the buttons
 
 			//Change each button's color to yellow
+            Debug.Log(tableButtons[i].ToString());
 			ColorBlock cb = tableButtons[i].colors;
 			cb.normalColor = Color.yellow;
 			tableButtons[i].colors = cb;
