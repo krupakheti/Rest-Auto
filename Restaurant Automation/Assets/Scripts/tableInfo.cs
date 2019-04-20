@@ -68,7 +68,8 @@ public class tableInfo : MonoBehaviour {
 
         //Read the text from directly from the test.txt file
         StreamReader reader = new StreamReader(path);
-        Debug.Log(reader.ReadToEnd());
+        reader.ReadToEnd();
+        //Debug.Log(reader.ReadToEnd());
         reader.Close();
     }        
     
@@ -133,13 +134,20 @@ public class tableInfo : MonoBehaviour {
         for (int i = 0; i < 10; i++)
         {
             theseStrings[i] = reader.ReadLine();
-            Debug.Log(theseStrings[i]);
+            //Debug.Log(theseStrings[i]);
         }
         reader.Close();
         return theseStrings;
     }
 
-    
+        public void problemAddressed() { 
+            Button thisButton = this.gameObject.GetComponent<Button>();
+            ColorBlock cb = thisButton.colors;
+            if(cb.normalColor == Color.red) {                 
+                cb.normalColor = Color.green;
+                thisButton.colors = cb;
+            } 
+        }
 
 }
 
