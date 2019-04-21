@@ -1377,7 +1377,7 @@ Prefab:
     - target: {fileID: 114065860088882530, guid: fb1fc615c2b2d3a45a7bad2fe4055201,
         type: 2}
       propertyPath: loginNumber
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114065860088882530, guid: fb1fc615c2b2d3a45a7bad2fe4055201,
         type: 2}
@@ -1838,6 +1838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  orderPopupPrefab: {fileID: 0}
 --- !u!4 &898889485 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4137961936290496, guid: fb1fc615c2b2d3a45a7bad2fe4055201,

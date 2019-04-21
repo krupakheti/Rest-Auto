@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class popup : MonoBehaviour {
     private Button actionButton;
     private Button cancelButton;
-    private Button inputOrder;
+    private Button inputOrder, tableStatus, orderList;
     private int login;
     public List<Button> otherButtons;
     public Button callingButton;
@@ -31,11 +31,16 @@ public class popup : MonoBehaviour {
             actionButton = GameObject.FindGameObjectWithTag("action").GetComponent<Button>();
             cancelButton = GameObject.FindGameObjectWithTag("cancel").GetComponent<Button>();
             inputOrder = GameObject.FindGameObjectWithTag("placeOrder").GetComponent<Button>();
+            tableStatus = GameObject.FindGameObjectWithTag("other").GetComponent<Button>();
+            orderList = GameObject.FindGameObjectWithTag("orderList").GetComponent<Button>();
             addActionClickMethod();
             cancelButton.onClick.AddListener(cancelClick);
             Text abText = actionButton.GetComponentInChildren<Text>();
             //Debug.Log(abText.text);
             renameActionButton(login, abText);
+            Text tblStatus = tableStatus.GetComponentInChildren<Text>();
+            setTableStatus(tblStatus, writeMe, login);
+            populateOrderList();
         }
         else { 
             GameObject[] otherButtonsGO = GameObject.FindGameObjectsWithTag("other");        
@@ -48,6 +53,23 @@ public class popup : MonoBehaviour {
             cancelButton.onClick.AddListener(orderCancelClick);
         }                		
 	}
+
+    private void populateOrderList()
+    {
+        Text orderListText = orderList.GetComponentInChildren<Text>();
+        foreach(string item in writeMe.order) { 
+            orderListText.text += item + "\n"; 
+        }
+
+    }
+
+    private void setTableStatus(Text tblStatus, tableInfo writeMe, int login)
+    {               
+            if(writeMe.waitingToOrder == true) tblStatus.text = "Waiting to Order.";
+            else if(writeMe.bill > 0 && writeMe.order.Count >1) tblStatus.text = "Waiting for food.";
+            else if(writeMe.bill > 0 && writeMe.order.Count <=1) tblStatus.text = "Waiting to pay.";
+            else tblStatus.text = "Does not need attention.";         
+    }
 
     private void renameActionButton(int login, Text buttonText)
     {
@@ -122,18 +144,24 @@ public class popup : MonoBehaviour {
             //Host
             case 1: actionButton.onClick.AddListener(hostOnClick);
                     inputOrder.gameObject.SetActive(false);
+                    tableStatus.gameObject.SetActive(false);
+                    orderList.gameObject.SetActive(false);
+                    
             break;
             //Waiter
             case 2: actionButton.onClick.AddListener(waiterOnClickGuestsLeft);                    
                     inputOrder.onClick.AddListener(waiterOnClickInputOrder);
+                    orderList.gameObject.SetActive(false);
             break;
             //Kitchen
-            case 3: actionButton.onClick.AddListener(kitchenOnClick);
-                    inputOrder.gameObject.SetActive(false);
+            case 3: actionButton.onClick.AddListener(kitchenOnClick);                    
+                    inputOrder.gameObject.SetActive(false);                    
             break;
             //Busser
             case 4: actionButton.onClick.AddListener(busserOnClick);
                     inputOrder.gameObject.SetActive(false);
+                    tableStatus.gameObject.SetActive(false);
+                    orderList.gameObject.SetActive(false);
             break;
             default: Debug.Log("Invalid Login in Popup.cs"); //default case
             break;

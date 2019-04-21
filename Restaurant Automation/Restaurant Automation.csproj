@@ -236,6 +236,7 @@
     <Compile Include="Assets\colorizor.cs" />
     <Compile Include="Assets\food1.cs" />
     <Compile Include="Assets\keypadSounds.cs" />
+    <Compile Include="Assets\managerPopup.cs" />
     <Compile Include="Assets\popup.cs" />
     <Compile Include="Assets\Scripts\Example.cs" />
     <Compile Include="Assets\Scripts\keypad_program.cs" />
@@ -245,6 +246,7 @@
     <Compile Include="Assets\Scripts\referenced_variables_SEP.cs" />
     <Compile Include="Assets\Scripts\tableHighlight.cs" />
     <Compile Include="Assets\Scripts\tableInfo.cs" />
+    <Compile Include="Assets\StaticClass.cs" />
     <Compile Include="Assets\Table0Interface.cs" />
     <Compile Include="Assets\TableOptionsWaiter.cs" />
     <Compile Include="Assets\tableSounds.cs" />

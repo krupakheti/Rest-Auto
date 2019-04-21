@@ -15,6 +15,11 @@ public class tableHighlight : MonoBehaviour {
 
 	// When the scene starts, this will run ONCE
 	void Start () {
+        //Debug.Log(StaticClass.LoginNumber);
+        try{loginNumber = StaticClass.LoginNumber; }
+        catch {Debug.Log("No loginNumber Found, using public");}
+
+
 		// Make an array of all the buttons with the tag 'button'
 		GameObject[] btn = GameObject.FindGameObjectsWithTag("button");
 		// Iterate through the array of 'btn' and add them to the 'buttons' list

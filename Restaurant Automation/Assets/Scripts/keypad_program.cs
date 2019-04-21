@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class keypad_program : MonoBehaviour {
 
     public keypadSounds player;
+    public GameObject orderPopupPrefab;
 
     private void Start()
     {
@@ -118,7 +119,7 @@ public class keypad_program : MonoBehaviour {
 				var UID_CA = UID.ToCharArray();
 				referenced_variables_SEP.privilage_type = (UID_CA[0] - '0');//https://stackoverflow.com/questions/239103/convert-char-to-int-in-c-sharp
 				Debug.Log ("Login sucessful. Privilage type =" + UID_CA[0]);
-				load_scene(1);
+                checkManager(UID_CA[0]);				
 			}
 		}
 		if (match == false) {
@@ -129,16 +130,28 @@ public class keypad_program : MonoBehaviour {
 
 	}
 
-	//attempt to login--/\
+    private void checkManager(char v)
+    {   
+        //CHECK MANAGER STATUS HERE
+        bool manager = true; //REMOVE THIS ASSIGNENT ONCE CHECKED
+        if (manager) {
+                Instantiate(Resources.Load("Manager Popup"));
+            }
+        else {load_scene(1);}
+
+    }
+
+    //attempt to login--/\
 
 
 
-	//clear the UID--\/
+    //clear the UID--\/
 
-	public void clear_UID(){
+    public void clear_UID(){
 
 		referenced_variables_SEP.UID = "";
-		Debug.Log ("UID cleared");        
+		Debug.Log ("UID cleared");
+        //checkManager('h'); testing purposes only
 	}
 
 	//clear the UID--/\

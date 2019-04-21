@@ -13,6 +13,8 @@ TagManager:
   - placeOrder
   - orderPopup
   - orderCancel
+  - manager
+  - orderList
   layers:
   - Default
   - TransparentFX
