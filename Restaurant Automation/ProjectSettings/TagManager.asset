@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - button
+  - action
+  - cancel
+  - other
+  - popup
+  - sceneScripts
+  - placeOrder
+  - orderPopup
+  - orderCancel
   layers:
   - Default
   - TransparentFX
