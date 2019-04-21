@@ -234,7 +234,6 @@
   <ItemGroup>
     <Compile Include="Assets\button_3.cs" />
     <Compile Include="Assets\food1.cs" />
-    <Compile Include="Assets\popup.cs" />
     <Compile Include="Assets\Scripts\Example.cs" />
     <Compile Include="Assets\Scripts\keypad_program.cs" />
     <Compile Include="Assets\Scripts\KS_program.cs" />
