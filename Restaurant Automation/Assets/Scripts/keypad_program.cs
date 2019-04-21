@@ -6,11 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class keypad_program : MonoBehaviour {
 
+    public keypadSounds player;
 
+    private void Start()
+    {
+        try { 
+        player = GameObject.FindObjectOfType<keypadSounds>();
+            }
+        catch { Debug.Log("No keypad sounds, proceeding");}
+    }
 
-	//number buttons--\/
+    //number buttons--\/
 
-	public void buttonCLick_0()
+    public void buttonCLick_0()
 	{
 		add_to_UID(0);
 	}
@@ -57,7 +65,7 @@ public class keypad_program : MonoBehaviour {
 
 	//used to move to another scene--\/
 
-	private void load_scene(int scene_number) {
+	public void load_scene(int scene_number) {
 		SceneManager.LoadScene(scene_number);
 	}
 
@@ -76,6 +84,7 @@ public class keypad_program : MonoBehaviour {
 			Debug.Log ("UID = " + referenced_variables_SEP.UID);
 		} else {
 			Debug.Log ("UID already has 5 numbers in it, clearing.");
+            player.playSound(4);
 			clear_UID ();
 			temp_string = "";
 			temp_string = temp_string + key_value.ToString ();
@@ -103,17 +112,19 @@ public class keypad_program : MonoBehaviour {
 			Debug.Log ("test");
 			Debug.Log ("Checking if " + stored_UID + " = " + UID);
 			if (stored_UID == UID) {
-				match = true;
+				player.playSound(3);
+                match = true;
 				referenced_variables_SEP.login_sucessful = 1;
 				var UID_CA = UID.ToCharArray();
 				referenced_variables_SEP.privilage_type = (UID_CA[0] - '0');//https://stackoverflow.com/questions/239103/convert-char-to-int-in-c-sharp
 				Debug.Log ("Login sucessful. Privilage type =" + UID_CA[0]);
-				//load_scene(1);
+				load_scene(1);
 			}
 		}
 		if (match == false) {
 			Debug.Log ("Login unsucessful");
 			clear_UID ();
+            player.playSound(2);
 		}
 
 	}
@@ -127,8 +138,7 @@ public class keypad_program : MonoBehaviour {
 	public void clear_UID(){
 
 		referenced_variables_SEP.UID = "";
-		Debug.Log ("UID cleared");
-
+		Debug.Log ("UID cleared");        
 	}
 
 	//clear the UID--/\

@@ -21,6 +21,8 @@ public class colorizor : MonoBehaviour {
         login = colorMe.getLoginNumber();
         tablesToHighlight = colorMe.tablesToHighlight;
         tablesToHighlight.Clear();
+
+        onClick();
 	}
 
     void onClick() { 

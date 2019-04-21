@@ -131,6 +131,7 @@ public class tableHighlight : MonoBehaviour {
         Debug.Log("Calling table = " + thisButton.GetComponent<tableInfo>().tableNumber);
         callingTable = thisButton;    
     }
+
     public Button getCallingTable() { 
         return callingTable;    
     }
