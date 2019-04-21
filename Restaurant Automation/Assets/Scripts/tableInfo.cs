@@ -28,6 +28,7 @@ public class tableInfo : MonoBehaviour {
         occupied = false;
         if(order.Count > 0) waitingToOrder = false;
         clean = false;
+        bill = 0;
     }
 
     public void markOrderFilled() { 
@@ -74,7 +75,7 @@ public class tableInfo : MonoBehaviour {
         foreach(GameObject goTable in allTables) { 
             tableInfo currentTableInfo = goTable.GetComponent<tableInfo>();
             if(currentTableInfo.tableNumber == currentTable) {                                 
-                Debug.Log("thisTableInfo: " + thisTableInfo);
+                //Debug.Log("thisTableInfo: " + thisTableInfo);
                 string[] words = thisTableInfo.Split(',');                                 
                 //Debug.Log("Entered Setters");
                 currentTableInfo.setOccupied(bool.Parse(words[1]));
@@ -131,7 +132,7 @@ public class tableInfo : MonoBehaviour {
     private string writeOrderToString(List<string> order) {
         string orderString = "";
         foreach (string thisItem in order) {
-            orderString += thisItem + " ";
+            if(string.Compare(thisItem, " ") !=0) orderString += thisItem + " ";
        }
         return orderString;
     }
@@ -162,7 +163,7 @@ public class tableInfo : MonoBehaviour {
         }     
     }
     
-    public void toString() {         
+    public void toString() {              
         Debug.Log("Table Number: " + tableNumber + "\n");
         Debug.Log("Occupied: " + occupied + "\n");
         Debug.Log("Clean: " + clean + "\n");

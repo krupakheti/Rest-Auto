@@ -247,6 +247,7 @@
     <Compile Include="Assets\Scripts\tableInfo.cs" />
     <Compile Include="Assets\Table0Interface.cs" />
     <Compile Include="Assets\TableOptionsWaiter.cs" />
+    <Compile Include="Assets\tableSounds.cs" />
     <Compile Include="Assets\TakeOrders.cs" />
   </ItemGroup>
   <ItemGroup>

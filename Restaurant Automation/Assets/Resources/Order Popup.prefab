@@ -769,6 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec005aa7366647409fe471abf62f396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  otherButtons: []
   callingButton: {fileID: 0}
   orderPopupPrefab: {fileID: 0}
 --- !u!114 &114907999629690884
@@ -803,9 +804,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Cancel
-
-'
+  m_Text: Done
 --- !u!222 &222080229776544750
 CanvasRenderer:
   m_ObjectHideFlags: 1

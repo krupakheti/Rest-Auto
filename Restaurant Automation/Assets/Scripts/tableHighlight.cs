@@ -54,7 +54,7 @@ public class tableHighlight : MonoBehaviour {
             foreach(Button currentTable in tableButtons) { 
                 if(checkCondition(2, currentTable)) { 
                     tablesToHighlight.Add(currentTable);    
-                }    
+                }                
             }
         }
         if (firstDigit == 3)
@@ -81,12 +81,14 @@ public class tableHighlight : MonoBehaviour {
     public bool checkCondition(int employeeType, Button currentTable)
     {
         tableInfo currentTableInfo = currentTable.gameObject.GetComponent<tableInfo>();
-        printInfo(currentTableInfo);
+        //printInfo(currentTableInfo);
 
 
         //Debug.Log(currentTableInfo.occupied + " " + currentTableInfo.waitingToOrder);
         if(employeeType == 1) {if(currentTableInfo.occupied == false) return true;}
-        if(employeeType == 2) {if(currentTableInfo.waitingToOrder == true) return true;}
+        if(employeeType == 2) {
+            if((currentTableInfo.waitingToOrder == true) || (currentTableInfo.bill > 0 && currentTableInfo.order.Count < 2)) return true;
+            }
         if(employeeType == 3) {if(currentTableInfo.order.Count > 1) return true;}
         if(employeeType == 4) {if(currentTableInfo.clean == false) return true;}
         
@@ -128,7 +130,7 @@ public class tableHighlight : MonoBehaviour {
     public int getLoginNumber() {return loginNumber;}
 
     public void setCallingTable(Button thisButton) { 
-        Debug.Log("Calling table = " + thisButton.GetComponent<tableInfo>().tableNumber);
+        //Debug.Log("Calling table = " + thisButton.GetComponent<tableInfo>().tableNumber);
         callingTable = thisButton;    
     }
 
