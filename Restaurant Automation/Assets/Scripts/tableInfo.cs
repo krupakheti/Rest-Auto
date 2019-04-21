@@ -46,10 +46,10 @@ public class tableInfo : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        string[] tableInformation = readInStrings();
-        populateTables(tableInformation);
+        //string[] tableInformation = readInStrings();
+        //populateTables(tableInformation);
 
-        sceneScriptsPrefab.SetActive(true);
+        //sceneScriptsPrefab.SetActive(true);
     }
 
       private void populateTables(string[] tableInformation)
@@ -59,18 +59,30 @@ public class tableInfo : MonoBehaviour {
         }
     }
 
+      public void populateAllTables(string[] tableInformation)
+    {
+        for (int i = 0; i < 6; i++) {
+            parseTableInfo(tableInformation[i], i+1);
+        }
+    }
+
     private void parseTableInfo(string thisTableInfo, int currentTable)
     {   
-        Debug.Log("thisTableInfo: " + thisTableInfo);
-        string[] words = thisTableInfo.Split(',');
-        //Debug.Log("Words: " + words[2]);        
-        if(int.Parse(words[0]) == tableNumber) { 
-            //Debug.Log("Entered Setters");
-            setOccupied(bool.Parse(words[1]));
-            setClean(bool.Parse(words[2]));
-            setW2O(bool.Parse(words[3]));
-            setOrder(new List<string>(words[4].Split(' ')));
-            setBill(double.Parse(words[5]));
+        //get all tables
+        GameObject[] allTables = GameObject.FindGameObjectsWithTag("button");
+        //find current table
+        foreach(GameObject goTable in allTables) { 
+            tableInfo currentTableInfo = goTable.GetComponent<tableInfo>();
+            if(currentTableInfo.tableNumber == currentTable) {                                 
+                Debug.Log("thisTableInfo: " + thisTableInfo);
+                string[] words = thisTableInfo.Split(',');                                 
+                //Debug.Log("Entered Setters");
+                currentTableInfo.setOccupied(bool.Parse(words[1]));
+                currentTableInfo.setClean(bool.Parse(words[2]));
+                currentTableInfo.setW2O(bool.Parse(words[3]));
+                currentTableInfo.setOrder(new List<string>(words[4].Split(' ')));
+                currentTableInfo.setBill(double.Parse(words[5]));                
+            }                    
         }
 
     }

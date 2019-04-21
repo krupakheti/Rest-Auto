@@ -78,7 +78,7 @@ public class tableHighlight : MonoBehaviour {
     }
 
     //Determines whether a table requires the attention of the current employee
-    private bool checkCondition(int employeeType, Button currentTable)
+    public bool checkCondition(int employeeType, Button currentTable)
     {
         tableInfo currentTableInfo = currentTable.gameObject.GetComponent<tableInfo>();
         printInfo(currentTableInfo);
