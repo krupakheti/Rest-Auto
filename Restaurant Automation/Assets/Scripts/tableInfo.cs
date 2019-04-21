@@ -52,27 +52,27 @@ public class tableInfo : MonoBehaviour {
         sceneScriptsPrefab.SetActive(true);
     }
 
-    private void populateTables(string[] tableInformation)
+      private void populateTables(string[] tableInformation)
     {
         for (int i = 0; i < 6; i++) {
-            parseTableInfo(tableInformation[i], i);
+            if(i+1==tableNumber) parseTableInfo(tableInformation[i], i+1);
         }
     }
 
     private void parseTableInfo(string thisTableInfo, int currentTable)
-    {        
+    {   
+        Debug.Log("thisTableInfo: " + thisTableInfo);
         string[] words = thisTableInfo.Split(',');
-        //Debug.Log("Words: " + words[2]);
+        //Debug.Log("Words: " + words[2]);        
+        if(int.Parse(words[0]) == tableNumber) { 
+            //Debug.Log("Entered Setters");
+            setOccupied(bool.Parse(words[1]));
+            setClean(bool.Parse(words[2]));
+            setW2O(bool.Parse(words[3]));
+            setOrder(new List<string>(words[4].Split(' ')));
+            setBill(double.Parse(words[5]));
+        }
 
-        //if(int.Parse(words[0]) == tableNumber) { 
-            //tableNumber = int.Parse(words[0]);
-            occupied = bool.Parse(words[1]);
-            clean = bool.Parse(words[2]);
-            waitingToOrder = bool.Parse(words[3]);
-            order = new List<string>(words[4].Split(' '));
-            //order.RemoveAt(order.Count - 1);
-            bill = double.Parse(words[5]);
-        //}
     }
         
     public void writeToFile() {
@@ -158,5 +158,8 @@ public class tableInfo : MonoBehaviour {
         Debug.Log("Order: " + order + "\n");
         Debug.Log("Bill: " + bill + "\n");        
     }
+
+
+
 }
 
