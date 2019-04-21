@@ -31,7 +31,7 @@ public class tableHighlight : MonoBehaviour {
         //highlight tables that need attending		
         foreach(Button currentButton in tablesToHighlight) { 
                 //Debug.Log("foreach button");
-                highlightSpecificButton(currentButton, Color.red);        
+                                                        //highlightSpecificButton(currentButton, Color.red);        
             }        
     }//end of Start()
 

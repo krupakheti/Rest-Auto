@@ -159,7 +159,21 @@ public class tableInfo : MonoBehaviour {
         Debug.Log("Bill: " + bill + "\n");        
     }
 
-
+     public void setOccupied(bool occ) {
+        occupied = occ;    
+    }
+    public void setClean(bool occ) {
+        clean = occ;    
+    }
+    public void setW2O(bool occ) {
+        waitingToOrder = occ;    
+    }
+    public void setOrder(List<string> occ) {
+        order = occ;    
+    }
+    public void setBill(double occ) {
+        bill = occ;    
+    }
 
 }
 
