@@ -8,10 +8,13 @@ public class tableHighlight : MonoBehaviour {
 	public GameObject mainCanvas;
 	public List<Button> tableButtons;
     public int loginNumber;
+<<<<<<< HEAD
     public List<Button> tablesToHighlight;
     public Button callingTable;
     public GameObject popupPrefab;
-    //public Button tablesToHighlight;
+=======
+    public Button tablesToHighlight;
+>>>>>>> parent of ba652f0... Table highlighting works for every employee type
 
 	// When the scene starts, this will run ONCE
 	void Start () {
@@ -24,6 +27,7 @@ public class tableHighlight : MonoBehaviour {
 			//tableButtons.Add(btn[i].GetComponent<Button>());
 		}
 
+<<<<<<< HEAD
 
 
 		//determine tables that need attending		
@@ -33,13 +37,22 @@ public class tableHighlight : MonoBehaviour {
                 //Debug.Log("foreach button");
                 highlightSpecificButton(currentButton, Color.red);        
             }        
+=======
 		//run the function called "HighlightButtons"
 		HighlightButtons();
         highlightSpecificButton(tablesToHighlight, Color.red);
 
 
+>>>>>>> parent of ba652f0... Table highlighting works for every employee type
     }//end of Start()
 	
+	// Update is called once per frame
+	void Update () {
+
+        //highlightSpecificButton(this.gameObject.GetComponent<Button>(), Color.red);
+		
+	}
+
 	// Example function making all of the buttons, non-interactable
 	private void HighlightButtons()
 	{
@@ -49,8 +62,9 @@ public class tableHighlight : MonoBehaviour {
 			//tableButtons[i].interactable = false;
 			// And do what ever else you want with the buttons
 
+<<<<<<< HEAD
     //Determines whether a table requires the attention of the current employee
-    bool checkCondition(int employeeType, Button currentTable)
+    private bool checkCondition(int employeeType, Button currentTable)
     {
         tableInfo currentTableInfo = currentTable.gameObject.GetComponent<tableInfo>();
         printInfo(currentTableInfo);
@@ -85,10 +99,11 @@ public class tableHighlight : MonoBehaviour {
         return false;
     }
 
-    void printInfo(tableInfo currentTableInfo)
+    private void printInfo(tableInfo currentTableInfo)
     {
        currentTableInfo.toString();
     }
+=======
 			//Change each button's color to yellow
             Debug.Log(tableButtons[i].ToString());
 			ColorBlock cb = tableButtons[i].colors;
@@ -99,6 +114,7 @@ public class tableHighlight : MonoBehaviour {
 			//Debug.Log(tableButtons[i].gameObject.name);
 		}
 	}//end of HighlightButtons()
+>>>>>>> parent of ba652f0... Table highlighting works for every employee type
 
     public void highlightSpecificButton(Button thisButton, Color thisColor) {
 
