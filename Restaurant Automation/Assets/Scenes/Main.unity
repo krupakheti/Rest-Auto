@@ -1206,7 +1206,7 @@ Prefab:
     - target: {fileID: 114065860088882530, guid: fb1fc615c2b2d3a45a7bad2fe4055201,
         type: 2}
       propertyPath: tableButtons.Array.size
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4137961936290496, guid: fb1fc615c2b2d3a45a7bad2fe4055201, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1247,7 +1247,7 @@ Prefab:
     - target: {fileID: 114065860088882530, guid: fb1fc615c2b2d3a45a7bad2fe4055201,
         type: 2}
       propertyPath: loginNumber
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114065860088882530, guid: fb1fc615c2b2d3a45a7bad2fe4055201,
         type: 2}
