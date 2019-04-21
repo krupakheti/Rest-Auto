@@ -10,6 +10,8 @@ public class tableHighlight : MonoBehaviour {
 	public List<Button> tableButtons;
     public int loginNumber;
     public List<Button> tablesToHighlight;
+    public Button callingTable;
+    public GameObject popupPrefab;
 
 	// When the scene starts, this will run ONCE
 	void Start () {
@@ -19,8 +21,10 @@ public class tableHighlight : MonoBehaviour {
 		for (int i = 0; i < btn.Length; i++)
 		{
 			// Adding the current 'btn' to the 'buttons' list
-			tableButtons.Add(btn[i].GetComponent<Button>());
+			//tableButtons.Add(btn[i].GetComponent<Button>());
 		}
+
+
 
 		//determine tables that need attending		
         determineProblemTables();
@@ -77,6 +81,16 @@ public class tableHighlight : MonoBehaviour {
     private bool checkCondition(int employeeType, Button currentTable)
     {
         tableInfo currentTableInfo = currentTable.gameObject.GetComponent<tableInfo>();
+        printInfo(currentTableInfo);
+
+
+        //Debug.Log(currentTableInfo.occupied + " " + currentTableInfo.waitingToOrder);
+        if(employeeType == 1) {if(currentTableInfo.occupied == false) return true;}
+        if(employeeType == 2) {if(currentTableInfo.waitingToOrder == true) return true;}
+        if(employeeType == 3) {if(currentTableInfo.order.Count > 1) return true;}
+        if(employeeType == 4) {if(currentTableInfo.clean == false) return true;}
+        
+        /*
         switch (employeeType) { 
             //Host
             case 1: if(currentTableInfo.occupied == false) return true;
@@ -88,10 +102,20 @@ public class tableHighlight : MonoBehaviour {
             case 3: if(currentTableInfo.order.Count != 0) return true;
             break;
             //Busser
-            case 4: if(currentTableInfo.clean == false) return true;
+            case 4: if(currentTableInfo.clean == false && currentTableInfo.occupied == false) return true;
+            break;
+            default: Debug.Log("Default checkCondition: " + currentTableInfo.tableNumber); 
             break;
         }
-        return false; //default
+        Debug.Log("Outside switch, returning False");
+        */
+        //Debug.Log("Employee type: " + employeeType);
+        return false;
+    }
+
+    private void printInfo(tableInfo currentTableInfo)
+    {
+       currentTableInfo.toString();
     }
 
     public void highlightSpecificButton(Button thisButton, Color thisColor) {
@@ -100,6 +124,21 @@ public class tableHighlight : MonoBehaviour {
         cb.normalColor = thisColor;
         thisButton.colors = cb;         
     }//end of color specific button
+
+    public int getLoginNumber() {return loginNumber;}
+
+    public void setCallingTable(Button thisButton) { 
+        Debug.Log("Calling table = " + thisButton.GetComponent<tableInfo>().tableNumber);
+        callingTable = thisButton;    
+    }
+    public Button getCallingTable() { 
+        return callingTable;    
+    }
+
+    public void createPopup() {     
+        Instantiate(popupPrefab, transform.position, Quaternion.identity);        
+    }
+
 
 }//end of class
 
