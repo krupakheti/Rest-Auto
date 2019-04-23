@@ -140,7 +140,7 @@ public class tableInfo : MonoBehaviour {
     public string[] readInStrings() {
         string[] theseStrings = new string[6];
         //string path = "Assets/Resources/tableInfo.csv";
-        //Debug.Log(Application.persistentDataPath.ToString());
+        Debug.Log(Application.persistentDataPath.ToString());
         string path = Application.persistentDataPath + "/tableInfo.csv";
         StreamReader reader = new StreamReader(path);
 
