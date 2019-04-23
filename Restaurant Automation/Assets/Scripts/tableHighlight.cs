@@ -12,11 +12,14 @@ public class tableHighlight : MonoBehaviour {
     public List<Button> tablesToHighlight;
     public Button callingTable;
     public GameObject popupPrefab;
+    private StaticClass muhStaticClass;
 
 	// When the scene starts, this will run ONCE
 	void Start () {
+        Destroy(GameObject.FindGameObjectWithTag("manager"));
+        muhStaticClass = GameObject.FindObjectOfType<StaticClass>();
         //Debug.Log(StaticClass.LoginNumber);
-        try{loginNumber = StaticClass.LoginNumber; }
+        try{loginNumber = muhStaticClass.getLogin(); }
         catch {Debug.Log("No loginNumber Found, using public");}
 
 

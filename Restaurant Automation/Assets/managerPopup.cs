@@ -10,6 +10,7 @@ public class managerPopup : MonoBehaviour {
     private StaticClass muhStaticClass;
     private keypadSounds player;
     private Button cancelButton;
+    private keypad_program loader;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,7 @@ public class managerPopup : MonoBehaviour {
         cancelButton = GameObject.FindGameObjectWithTag("orderCancel").GetComponent<Button>();
         cancelButton.onClick.AddListener(cancelButtonOnClick);
         player = GameObject.FindObjectOfType<keypadSounds>();
+        loader = GameObject.FindObjectOfType<keypad_program>();
 	}
 
     private void cancelButtonOnClick()
@@ -51,21 +53,25 @@ public class managerPopup : MonoBehaviour {
     private void busserButton()
     {
         muhStaticClass.setLogin(4);
+        loader.load_scene(1);
     }
 
     private void kitchenButton()
     {
         muhStaticClass.setLogin(3);
+        loader.load_scene(1);
     }
 
     private void waiterButton()
     {
         muhStaticClass.setLogin(2);
+        loader.load_scene(1);
     }
 
     private void hostButton()
     {
         muhStaticClass.setLogin(1);
+        loader.load_scene(1);
     }
 
 

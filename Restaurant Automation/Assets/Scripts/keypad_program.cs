@@ -8,9 +8,11 @@ public class keypad_program : MonoBehaviour {
 
     public keypadSounds player;
     public GameObject orderPopupPrefab;
+    private StaticClass muhStaticClass;
 
     private void Start()
     {
+        muhStaticClass = GameObject.FindObjectOfType<StaticClass>();
         try { 
         player = GameObject.FindObjectOfType<keypadSounds>();
             }
@@ -82,7 +84,7 @@ public class keypad_program : MonoBehaviour {
 		if (temp_string.Length < 5) {
 			temp_string = temp_string + key_value.ToString ();
 			referenced_variables_SEP.UID = temp_string;
-			Debug.Log ("UID = " + referenced_variables_SEP.UID);
+			//Debug.Log ("UID = " + referenced_variables_SEP.UID);
 		} else {
 			Debug.Log ("UID already has 5 numbers in it, clearing.");
             player.playSound(4);
@@ -90,7 +92,7 @@ public class keypad_program : MonoBehaviour {
 			temp_string = "";
 			temp_string = temp_string + key_value.ToString ();
 			referenced_variables_SEP.UID = temp_string;
-			Debug.Log ("UID = " + referenced_variables_SEP.UID);
+			//Debug.Log ("UID = " + referenced_variables_SEP.UID);
 		}
 
 	}
@@ -105,21 +107,23 @@ public class keypad_program : MonoBehaviour {
 
 		string UID = referenced_variables_SEP.UID;
 		List<string> UID_list = referenced_variables_SEP.UID_list;
-		Debug.Log ("UID_list>");
-		Debug.Log (UID_list);
+		//Debug.Log ("UID_list>");
+		//Debug.Log (UID_list);
 		bool match = false;
-		Debug.Log ("about to enter foreach loop");
+		//Debug.Log ("about to enter foreach loop");
 		foreach (string stored_UID in UID_list) {
-			Debug.Log ("test");
-			Debug.Log ("Checking if " + stored_UID + " = " + UID);
+			//Debug.Log ("test");
+			//Debug.Log ("Checking if " + stored_UID + " = " + UID);
 			if (stored_UID == UID) {
 				player.playSound(3);
                 match = true;
 				referenced_variables_SEP.login_sucessful = 1;
-				var UID_CA = UID.ToCharArray();
-				referenced_variables_SEP.privilage_type = (UID_CA[0] - '0');//https://stackoverflow.com/questions/239103/convert-char-to-int-in-c-sharp
-				Debug.Log ("Login sucessful. Privilage type =" + UID_CA[0]);
-                checkManager(UID_CA[0]);				
+				string UID_CA = (UID);				
+                int login = int.Parse(UID_CA);
+                while(login >= 10) login /= 10; //reoves all but first digit                        
+                //referenced_variables_SEP.privilage_type = (UID_CA[0] - '0');//https://stackoverflow.com/questions/239103/convert-char-to-int-in-c-sharp
+				Debug.Log ("Login sucessful. Privilage type =" + login);
+                checkManager(login);				
 			}
 		}
 		if (match == false) {
@@ -130,14 +134,16 @@ public class keypad_program : MonoBehaviour {
 
 	}
 
-    private void checkManager(char v)
+    private void checkManager(int login)
     {   
-        //CHECK MANAGER STATUS HERE
-        bool manager = true; //REMOVE THIS ASSIGNENT ONCE CHECKED
-        if (manager) {
+        //CHECK MANAGER STATUS HERE        
+        if (login == 5) {
                 Instantiate(Resources.Load("Manager Popup"));
             }
-        else {load_scene(1);}
+        else {
+            muhStaticClass.setLogin(login);
+            load_scene(1);
+            }
 
     }
 
@@ -150,7 +156,7 @@ public class keypad_program : MonoBehaviour {
     public void clear_UID(){
 
 		referenced_variables_SEP.UID = "";
-		Debug.Log ("UID cleared");
+		//Debug.Log ("UID cleared");
         //checkManager('h'); testing purposes only
 	}
 

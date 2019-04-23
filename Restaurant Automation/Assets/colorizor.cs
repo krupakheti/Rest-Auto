@@ -10,15 +10,18 @@ public class colorizor : MonoBehaviour {
     private tableHighlight colorMe;
     private tableInfo writeMe;
     private int login;
+    private StaticClass muhStaticClass;
 
 	// Use this for initialization
 	void Start () {
+        muhStaticClass = GameObject.FindObjectOfType<StaticClass>();
 		thisButton = this.gameObject.GetComponent<Button>();
         thisButton.onClick.AddListener(onClick);
         colorMe = GameObject.FindObjectOfType<tableHighlight>();        
         callingButton = colorMe.getCallingTable();
         writeMe = callingButton.GetComponent<tableInfo>();
-        login = colorMe.getLoginNumber();
+        //login = colorMe.getLoginNumber();
+        login = muhStaticClass.getLogin();
         tablesToHighlight = colorMe.tablesToHighlight;
         tablesToHighlight.Clear();
 
