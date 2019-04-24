@@ -8,18 +8,13 @@ Version 1.0
 
 
 
+Login Authentication Codes.
 
-
-
-
-
-
-
-
-
-
-
-
+Host- 11490
+Waiter - 21170
+Busser - 30890
+Kitchen Staff - 46660
+Admin - 53140
 
 
 
